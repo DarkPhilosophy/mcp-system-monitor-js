@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  mcp-system-monitor-js:
+    build: .
+    ports:
+      - "57996:57996"
+    restart: unless-stopped
+    container_name: mcp-system-monitor-js

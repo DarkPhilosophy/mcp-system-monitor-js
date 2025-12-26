@@ -1,0 +1,14 @@
+
+> mcp-system-monitor-js@0.1.0 start
+> node src/index.js
+
+MCP System Monitor JS server listening on port 57996
+[0mPOST / [32m200[0m 28.697 ms - 158[0m
+[0mPOST / [33m404[0m 2.484 ms - 70[0m
+[0mGET / [32m200[0m 1.070 ms - 32[0m
+[0mPOST / [32m200[0m 1.699 ms - 158[0m
+[0mPOST / [33m404[0m 1.217 ms - 70[0m
+[0mGET / [32m200[0m 0.453 ms - 32[0m
+[0mPOST / [32m200[0m 0.978 ms - 158[0m
+[0mPOST / [33m404[0m 1.043 ms - 70[0m
+[0mGET / [32m200[0m 0.886 ms - 32[0m
