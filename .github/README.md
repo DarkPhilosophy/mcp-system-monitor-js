@@ -3,7 +3,7 @@
 A Model Context Protocol (MCP) server implementation in JavaScript, designed for AI agents to monitor and interact with Linux systems. This server provides comprehensive metrics including CPU, memory, disk, network, and process data through both Stdio and secured HTTP/SSE transports.
 
 <!-- NPM-VERSION-START -->
-[![Status: Pending](https://img.shields.io/badge/Status-Pending-yellow)](https://www.npmjs.com/package/@darkphilosophy/system-monitor) ![GitHub](https://img.shields.io/badge/GitHub-v0.2.0-blue) ![npm](https://img.shields.io/badge/npm-v0.2.0-green)
+[![Status: Synced](https://img.shields.io/badge/Status-Synced-brightgreen)](https://www.npmjs.com/package/@darkphilosophy/system-monitor) ![GitHub](https://img.shields.io/badge/GitHub-v0.2.1-blue) ![npm](https://img.shields.io/badge/npm-v0.2.1-green)
 <!-- NPM-VERSION-END -->
 
 ## Features
