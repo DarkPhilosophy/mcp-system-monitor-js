@@ -1,0 +1,14 @@
+{
+  "requiredFiles": [
+    "package.json",
+    ".github/CHANGELOG.md",
+    ".github/README.md",
+    "eslint.config.mjs",
+    "src/index.js"
+  ],
+  "requiredDirs": [
+    "src",
+    ".scripts",
+    ".github"
+  ]
+}

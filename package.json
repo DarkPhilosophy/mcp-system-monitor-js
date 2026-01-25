@@ -1,12 +1,23 @@
 {
-  "name": "mcp-system-monitor-js",
-  "version": "0.1.0",
+  "name": "@darkphilosophy/system-monitor",
+  "version": "0.2.1",
   "description": "A comprehensive system monitoring library for Linux servers with MCP protocol and HTTP REST API support (JavaScript version)",
   "main": "src/index.js",
+  "bin": {
+    "mcp-system-monitor": "bin/mcp-system-monitor.js"
+  },
   "scripts": {
     "start": "node src/index.js",
     "dev": "node --watch src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src .scripts --format stylish",
+    "lint:fix": "eslint --fix src .scripts --format stylish",
+    "lint:status": "node .scripts/update-lint-status.js",
+    "validate": "node .scripts/validate-build.js && node .scripts/scan-leaks.js",
+    "sync-version": "node .scripts/sync-version.js",
+    "format": "prettier --write \"src/**/*.js\" \".scripts/**/*.js\"",
+    "format:check": "prettier --check \"src/**/*.js\" \".scripts/**/*.js\"",
+    "prepare": "husky install"
   },
   "keywords": [
     "monitoring",
@@ -16,8 +27,11 @@
     "api",
     "metrics"
   ],
-  "author": "Gemini",
-  "license": "MIT",
+  "author": "DarkPhilosophy",
+  "license": "GPL-3.0-or-later",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.25.1",
     "cors": "^2.8.5",
@@ -25,5 +39,15 @@
     "morgan": "^1.10.0",
     "systeminformation": "^5.22.9",
     "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jsdoc": "^62.4.1",
+    "eslint-plugin-prettier": "^5.5.5",
+    "globals": "^17.1.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.8.1"
   }
 }

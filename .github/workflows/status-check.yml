@@ -1,0 +1,50 @@
+name: npm Status Check
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  check-status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch npm Version & Update README
+        run: node .scripts/fetch-npm-version.js
+
+      - name: Commit Status Update
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+
+          if [[ -n $(git status --porcelain .github/README.md) ]]; then
+            echo "Status changed. Committing..."
+            git add .github/README.md
+            git commit -m "chore: Update npm status [skip ci]"
+            git push
+          else
+            echo "No status change detected."
+          fi
+
+      - name: Disable Workflow if Synced
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if grep -q "Status-Synced-brightgreen" .github/README.md; then
+            echo "✅ npm package is synced! Disabling this workflow."
+            gh workflow disable "npm Status Check"
+          else
+            echo "⏳ Still pending. Will check again tomorrow."
+          fi

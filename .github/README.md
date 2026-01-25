@@ -2,6 +2,10 @@
 
 A Model Context Protocol (MCP) server implementation in JavaScript, designed for AI agents to monitor and interact with Linux systems. This server provides comprehensive metrics including CPU, memory, disk, network, and process data through both Stdio and secured HTTP/SSE transports.
 
+<!-- NPM-VERSION-START -->
+[![Status: Pending](https://img.shields.io/badge/Status-Pending-yellow)](https://www.npmjs.com/package/@darkphilosophy/system-monitor) ![GitHub](https://img.shields.io/badge/GitHub-v0.2.0-blue) ![npm](https://img.shields.io/badge/npm-v0.2.0-green)
+<!-- NPM-VERSION-END -->
+
 ## Features
 
 - **Dual Mode**: Runs as a standard MCP server (Stdio) or a secured HTTP server (`--http`).
@@ -31,6 +35,37 @@ When running in HTTP mode (`--http`), you can secure the endpoint using an API k
     - **Query**: `http://localhost:57996/sse?apiKey=your-secure-token-here`
 
 *Note: If `MCP_API_KEY` is not set, the HTTP server will default to public access (local network only recommended).*
+
+## Installation
+
+### Automatic Install (Recommended)
+
+This script installs to `~/.gemini/extensions/system-monitor-js`, runs `npm install`, and creates a legacy symlink at
+`~/.local/share/mcp-servers/system-monitor-js`.
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/DarkPhilosophy/mcp-system-monitor-js/master/install.sh | bash
+```
+
+### Manual Install
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/DarkPhilosophy/mcp-system-monitor-js.git
+   cd mcp-system-monitor-js
+   ```
+
+2. **Install dependencies (required for manual installs):**
+   ```bash
+   npm install
+   ```
+
+3. **Link to Gemini extensions and legacy MCP path (optional):**
+   ```bash
+   mkdir -p ~/.gemini/extensions
+   ln -s $(pwd) ~/.gemini/extensions/system-monitor-js
+   ln -sfn ~/.gemini/extensions/system-monitor-js ~/.local/share/mcp-servers/system-monitor-js
+   ```
 
 ## Usage
 
@@ -83,22 +118,10 @@ The server listens on port **57996** by default.
 
 <!-- LATEST-VERSION-START -->
 <details open>
-<summary><strong>Latest Update (v0.2.0)</strong></summary>
+<summary><strong>Latest Update (v0.2.1)</strong></summary>
 
 - 2026-01-25
-- **HTTP Authentication**: Added support for `MCP_API_KEY` environment variable to secure the SSE/HTTP endpoint.
-- **Input Validation**: Implemented Zod schemas for all tool parameters to ensure strict input handling.
-- **Code Consolidation**: Merged `mcp_server.js` into `index.js` for a cleaner, unified codebase using the official MCP SDK for both transport modes.
-- **Static Caching**: Added a TTL-based cache (1 hour) for static system data (OS info, CPU hardware) to reduce redundant system calls.
-- **Parallel Data Fetching**: Optimized all data-gathering functions to use `Promise.all` for parallel hardware sensor queries.
-- **Renamed Identity**: Rebranded the server from `mcp-system-monitor-js` to a simpler `system-monitor`.
-- **Persistent Metrics**: Implemented background persistence to `history.json` with a rolling 24-hour window.
-- **Proactive Alerting**: Added real-time threshold monitoring (CPU, Memory, Disk, Temp) with console warnings.
-- **Trend Analysis**: Introduced `get_metrics_history` tool to retrieve performance history.
-- **Enhanced `get_processes`**: Added support for `limit`, `name` filtering, and `sortBy` (`cpu_usage`, `memory_usage`, `priority`).
-- **Enhanced `get_disk_info`**: Added `mountPoint` filtering support.
-- **Aggregated Metrics**: Improved `get_system_metrics` tool to return a consolidated, prioritized snapshot of system health.
-- **Auto-Update**: Added non-blocking auto-update script that checks for newer versions on startup.
+- **Binary Entrypoint**: Add npm CLI entrypoint `mcp-system-monitor`.
 
 </details>
 <!-- LATEST-VERSION-END -->
