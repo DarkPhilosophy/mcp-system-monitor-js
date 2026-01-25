@@ -2,6 +2,10 @@
 
 A Model Context Protocol (MCP) server implementation in JavaScript, designed for AI agents to monitor and interact with Linux systems. This server provides comprehensive metrics including CPU, memory, disk, network, and process data through both Stdio and secured HTTP/SSE transports.
 
+<!-- NPM-VERSION-START -->
+[![Status: Pending](https://img.shields.io/badge/Status-Pending-yellow)](https://www.npmjs.com/package/@darkphilosophy/system-monitor) ![GitHub](https://img.shields.io/badge/GitHub-v0.2.0-blue) ![npm](https://img.shields.io/badge/npm-v0.2.0-green)
+<!-- NPM-VERSION-END -->
+
 ## Features
 
 - **Dual Mode**: Runs as a standard MCP server (Stdio) or a secured HTTP server (`--http`).
@@ -31,6 +35,37 @@ When running in HTTP mode (`--http`), you can secure the endpoint using an API k
     - **Query**: `http://localhost:57996/sse?apiKey=your-secure-token-here`
 
 *Note: If `MCP_API_KEY` is not set, the HTTP server will default to public access (local network only recommended).*
+
+## Installation
+
+### Automatic Install (Recommended)
+
+This script installs to `~/.gemini/extensions/system-monitor-js`, runs `npm install`, and creates a legacy symlink at
+`~/.local/share/mcp-servers/system-monitor-js`.
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/DarkPhilosophy/mcp-system-monitor-js/master/install.sh | bash
+```
+
+### Manual Install
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/DarkPhilosophy/mcp-system-monitor-js.git
+   cd mcp-system-monitor-js
+   ```
+
+2. **Install dependencies (required for manual installs):**
+   ```bash
+   npm install
+   ```
+
+3. **Link to Gemini extensions and legacy MCP path (optional):**
+   ```bash
+   mkdir -p ~/.gemini/extensions
+   ln -s $(pwd) ~/.gemini/extensions/system-monitor-js
+   ln -sfn ~/.gemini/extensions/system-monitor-js ~/.local/share/mcp-servers/system-monitor-js
+   ```
 
 ## Usage
 

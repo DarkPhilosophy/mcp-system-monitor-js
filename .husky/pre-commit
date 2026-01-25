@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Auto-format and fix linting issues
+npm run format
+npm run lint:fix
+
+# Validate build and scan for leaks
+npm run validate
+
+# Add changes to the commit (since format/lint:fix might have modified files)
+git add -u
