@@ -1,0 +1,15 @@
+{
+  "name": "system-monitor",
+  "version": "0.2.1",
+  "description": "System monitoring tools for MCP",
+  "repository": "https://github.com/DarkPhilosophy/mcp-system-monitor-js",
+  "mcpServers": {
+    "system-monitor": {
+      "command": "node",
+      "args": [
+        "${extensionPath}/index.js"
+      ],
+      "cwd": "${extensionPath}"
+    }
+  }
+}
